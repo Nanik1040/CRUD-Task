@@ -1,0 +1,35 @@
+<h1 *ngIf="isAddMode">Add Task</h1>
+<h1 *ngIf="!isAddMode">Edit Task</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <div class="form-group col">
+      <label>Title</label>
+      <input type="text" formControlName="title" class="form-control" />
+    </div>
+    <div class="form-group col-5">
+      <label>Descrption</label>
+      <input type="text" formControlName="description" class="form-control" />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <label>Status</label>
+      <select formControlName="status" class="form-control">
+        <option value=""></option>
+        <option value="Pending">Pending</option>
+        <option value="Completed">Completed</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button [disabled]="loading" class="btn btn-primary">
+      <span
+        *ngIf="loading"
+        class="spinner-border spinner-border-sm mr-1"
+      ></span>
+      Save
+    </button>
+    <a routerLink="/tasks" class="btn btn-link">Cancel</a>
+  </div>
+</form>
